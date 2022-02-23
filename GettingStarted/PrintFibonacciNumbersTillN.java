@@ -1,3 +1,4 @@
+package gettingStarted;
 import java.util.*;
 
 public class PrintFibonacciNumbersTillN {
