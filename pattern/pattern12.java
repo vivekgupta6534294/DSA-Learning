@@ -1,5 +1,5 @@
 
-
+package pattern;
 import java.util.*;
 
 public class pattern12 {

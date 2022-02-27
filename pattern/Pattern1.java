@@ -1,4 +1,6 @@
-import java.util.*;
+package pattern;
+
+import java.util.Scanner;
 
 public class Pattern1 {
 
