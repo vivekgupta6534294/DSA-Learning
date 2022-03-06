@@ -23,7 +23,7 @@ public class Pattern12 {
             System.out.println();
             
         }
-
+        scn.close();
     }
 }
 // import java.util.*;
