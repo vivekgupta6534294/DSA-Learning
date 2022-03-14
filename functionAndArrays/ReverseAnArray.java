@@ -3,24 +3,23 @@ package functionAndArrays;
 import java.io.*;
 import java.util.*;
 
-public class InverseOfAnArray{
+public class ReverseAnArray{
   public static void display(int[] a){
     StringBuilder sb = new StringBuilder();
 
     for(int val: a){
-      sb.append(val + "\n");
+      sb.append(val + " ");
     }
     System.out.println(sb);
   }
 
-  public static int[] inverse(int[] a){
+  public static void reverse(int[] a){
     // write your code here
-    int inverse[]=new int[a.length];
-    for(int i=0;i<a.length;i++){
-        int val=a[i];
-        inverse[val]=i;
+    for(int i=0;i<a.length/2;i++){
+      a[i]=a[i]^a[a.length-i-1];
+      a[a.length-i-1]=a[i]^a[a.length-i-1];
+      a[i]= a[i]^a[a.length-i-1];
     }
-    return inverse;
   }
 
 public static void main(String[] args) throws Exception {
@@ -32,8 +31,8 @@ public static void main(String[] args) throws Exception {
        a[i] = Integer.parseInt(br.readLine());
     }
 
-    int[] inv = inverse(a);
-    display(inv);
+    reverse(a);
+    display(a);
  }
 
 }
