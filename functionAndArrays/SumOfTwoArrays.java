@@ -1,5 +1,5 @@
 package functionAndArrays;
-import java.io.*;
+// import java.io.*;
 import java.util.*;
 
 public class SumOfTwoArrays{
@@ -23,6 +23,7 @@ public class SumOfTwoArrays{
         for(int vl : res){
             System.out.println(vl);
         }
+        scn.close();
     }
 
 

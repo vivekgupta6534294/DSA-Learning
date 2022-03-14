@@ -1,7 +1,6 @@
 package functionAndArrays;
 
 import java.io.*;
-import java.util.*;
 
 public class ReverseAnArray{
   public static void display(int[] a){
