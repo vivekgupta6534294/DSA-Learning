@@ -34,6 +34,7 @@ public class DifferenceOfTwoArrays {
             i--;k--;j--;
         }
         int idx=0;
+        //skipping starting 0;
         while(idx<diff.length){
             if(diff[idx]==0){
                 idx++;
