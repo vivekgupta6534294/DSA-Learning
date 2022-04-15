@@ -16,6 +16,7 @@ public class PrintIncreasingDecreasing {
         if(n==0) return;
         System.out.println(n);
         PrintIncreasingDecreasingOrder(n-1);
+       //10
         System.out.println(n);
     }
 
