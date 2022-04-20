@@ -20,7 +20,6 @@ public class AllIndicesOfArray {
             System.out.println("NO OUTPUT");
             return;
         }
-
         for(int i = 0; i < iarr.length; i++){
             System.out.println(iarr[i]);
         }
