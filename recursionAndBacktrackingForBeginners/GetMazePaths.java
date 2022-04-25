@@ -5,11 +5,11 @@ import java.util.*;
 public class GetMazePaths {
     public static void main(String[] args) throws Exception {
         Scanner scn=new Scanner(System.in);
-        int sr=scn.nextInt();
-        int sc=scn.nextInt();
+        // int sr=scn.nextInt();
+        // int sc=scn.nextInt();
         int dr=scn.nextInt();
         int dc=scn.nextInt();
-        ArrayList<String> ans=getMazePaths(sr, sc, dr, dc);
+        ArrayList<String> ans=getMazePaths(0, 0, dr-1, dc-1);
         System.out.println(ans);
     }
 
