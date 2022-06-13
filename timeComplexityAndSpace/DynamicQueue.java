@@ -3,7 +3,7 @@ package timeComplexityAndSpace;
 import java.io.*;
 import java.util.*;
 
-public class Main {
+public class DynamicQueue {
 
   public static class CustomQueue {
     int[] data;
