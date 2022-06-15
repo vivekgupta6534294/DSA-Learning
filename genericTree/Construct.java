@@ -53,11 +53,22 @@ public class Construct{
         }
         return 1+temp;
     }
+    public static int max(Node root){
+        int res=Integer.MIN_VALUE;
+        for(Node child:root.children){
+            // Child ka max;
+           res=Math.max(res,max(child));
+        }
+        // child ka max vs khud ka max
+        return Math.max(root.data, res);
+    }
     public static void main(String args[]){
         Integer []arr = {10, 20, 50, null, 60, null, null, 30, 70, 90, null, 100, null, 110, null, null, null, 40, 80, null, null, null};
         Node root = construct(arr);
         display(root);
         int treeSize=size(root);
         System.out.println("Size of Generic Tree is : "+treeSize);
+        int maxx=max(root);
+        System.out.println("Max of tree "+maxx);
     }
 }
