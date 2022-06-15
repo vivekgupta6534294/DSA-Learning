@@ -63,7 +63,7 @@ public class Construct{
         return Math.max(root.data, res);
     }
     public static int height(Node root){
-        int res=0;
+        int res=-1;
         for(Node child: root.children){
             res=Math.max(res,height(child));
         }
