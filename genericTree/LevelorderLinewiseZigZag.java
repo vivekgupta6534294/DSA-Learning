@@ -1,4 +1,15 @@
 package genericTree;
+// Example
+// Sample Input
+
+// 24
+// 10 20 50 -1 60 -1 -1 30 70 -1 80 110 -1 120 -1 -1 90 -1 -1 40 100 -1 -1 -1
+
+// Sample Output
+// 10 
+// 40 30 20 
+// 50 60 70 80 90 100 
+// 120 110
 
 import java.io.*;
 import java.util.*;
@@ -96,22 +107,34 @@ public class LevelorderLinewiseZigZag {
   public static void levelOrderLinewiseZZ(Node node){
     // write your code here
     // Wrong Code Will do it later 
-    // Stack<Node> ms=new Stack<>();
-    // Stack<Node> hs=new Stack<>();
-    // ms.push(node);
-    // while(ms.size()!=0){
-    //     Node rem=ms.pop();
-    //     System.out.println(rem.data+ " ");
-    //     for(Node child: rem.children){
-    //         hs.push(child);
-    //     }
-    //     if(ms.size()==0){
-    //         System.out.println();
-    //         Stack<Node> temp=ms;
-    //         ms=hs;
-    //         hs=temp;
-    //     }
-    // }
+    Stack<Node> ms=new Stack<>();
+    Stack<Node> hs=new Stack<>();
+    ms.push(node);
+    int level=0;
+    while(ms.size()>0){
+        Node rem=ms.pop();
+        System.out.print(rem.data+ " ");
+        if(level%2==0){
+            for(Node child: rem.children){
+                hs.push(child);
+            }
+        }else{
+            for(int i=rem.children.size()-1;i>=0;i--){
+                Node child=rem.children.get(i);
+                hs.push(child);
+            }
+        }
+       
+        if(ms.size()==0){
+            // Stack<Node> temp=ms;
+            // ms=hs;
+            // hs=temp;
+            ms=hs;
+            hs=new Stack<>();
+            level++;
+            System.out.println();
+        }
+    }
   }
 
   public static void main(String[] args) throws Exception {
