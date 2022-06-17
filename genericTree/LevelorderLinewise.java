@@ -3,7 +3,7 @@ package genericTree;
 import java.io.*;
 import java.util.*;
 
-public class Main {
+public class LevelorderLinewise {
   private static class Node {
     int data;
     ArrayList<Node> children = new ArrayList<>();
@@ -94,22 +94,23 @@ public class Main {
   }
 
   public static void levelOrderLinewise(Node node){
-    // write your code here
+    // write your code here\
+    /// New Approach 
     Queue<Node>  currQueue=new ArrayDeque<>();
     Queue<Node>  nextQueue=new ArrayDeque<>();
     currQueue.add(node);
-    while(currQueue.size()!=0 || nextQueue.size()!=0){
+    while(currQueue.size()!=0 ){
+        Node remo=currQueue.remove();
+        System.out.print(remo.data+" ");
+        for(Node child: remo.children){
+            nextQueue.add(child);
+        }
         if(currQueue.size()==0){
             Queue<Node> temp=currQueue;
             currQueue=nextQueue;
             nextQueue=temp;
             System.out.println();
 
-        }
-        Node remo=currQueue.remove();
-        System.out.print(remo.data+" ");
-        for(Node child: remo.children){
-            nextQueue.add(child);
         }
     }
   }
