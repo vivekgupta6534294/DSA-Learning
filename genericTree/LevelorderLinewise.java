@@ -95,7 +95,7 @@ public class LevelorderLinewise {
 
   public static void levelOrderLinewise(Node node){
     // write your code here\
-    /// New Approach 
+    // New Approach 
     Queue<Node>  currQueue=new ArrayDeque<>();
     Queue<Node>  nextQueue=new ArrayDeque<>();
     currQueue.add(node);
