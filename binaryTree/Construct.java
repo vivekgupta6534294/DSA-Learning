@@ -1,4 +1,6 @@
-public class Main{
+package binaryTree;
+import java.util.*;
+public class Construct{
     public static class Node{
         int data;
         Node left , right;
@@ -46,7 +48,18 @@ public class Main{
         }
         return root;
     }
-    public static void main(String args[]){
+    public static void display(Node node){
+        if(node == null)return;
+        System.out.print(node.left == null ? "." : node.left.data);
+        System.out.print(" <- "+node.data+" -> ");
+        System.out.println(node.right == null ? "." : node.right.data);
 
+        display(node.left);
+        display(node.right);        
+    }
+    public static void main(String args[]){
+        Integer arr[] = {10,20,40,60,null,null,null,50,70,null,null,80,null,null,30,null,90,100,null,null,null};
+        Node root = construct(arr);
+        display(root);
     }
 }
