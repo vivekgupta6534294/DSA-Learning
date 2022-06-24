@@ -3,7 +3,7 @@ package binaryTree;
 import java.io.*;
 import java.util.*;
 
-public class PrintSingleChildNodes {
+public class RemoveLeavesInBinaryTree {
   public static class Node {
     int data;
     Node left;
@@ -81,35 +81,29 @@ public class PrintSingleChildNodes {
     display(node.right);
   }
 
-  public static void printSingleChildNodes(Node node, Node parent){
+
+//   Input : 
+//   19
+// 50 25 12 n n 37 30 n n n 75 62 n 70 n n 87 n n
+// Output
+// 25 <- 50 -> 75
+// . <- 25 -> 37
+// . <- 37 -> .
+// 62 <- 75 -> .
+// . <- 62 -> .
+
+  public static Node removeLeaves(Node node){
     // write your code here
-    if(node==null) return ;
-    if(parent!=null){
-        if(node==parent.left && parent.right==null){
-            System.out.println(node.data);
-            // return;// return nhi hoga because like skew tree 
+    if(node==null) return null;
     
-        }else if(node==parent.right && parent.left==null){
-            System.out.println(node.data);
-            // return;
-        }
+    if(node.left==null && node.right==null){
+        return null;
     }
-    printSingleChildNodes(node.left, node);
-    printSingleChildNodes(node.right, node);
-    // Below is the approach 2
-  }
-  public static void printSingleChildNodes(Node node){
-    // write your code here
-    // Approach 2
-    if(node==null) return ;
-    if(node.left!=null && node.right==null){
-        System.out.println(node.data);
-     }else if(node.left!=null && node.right==null){
-        System.out.println(node.data);
+    node.left=removeLeaves(node.left);
+    node.right=removeLeaves(node.right);
+
+    return node;
     
-    }
-    printSingleChildNodes(node.left, node);
-    printSingleChildNodes(node.right, node);
   }
 
   public static void main(String[] args) throws Exception {
@@ -126,7 +120,8 @@ public class PrintSingleChildNodes {
     }
 
     Node root = construct(arr);
-    printSingleChildNodes(root, null);
+    root = removeLeaves(root);
+    display(root);
   }
 
 }
