@@ -87,12 +87,26 @@ public class Main {
     if(parent!=null){
         if(node==parent.left && parent.right==null){
             System.out.println(node.data);
-            return;
+            // return;// return nhi hoga because like skew tree 
     
         }else if(node==parent.right && parent.left==null){
             System.out.println(node.data);
-            return;
+            // return;
         }
+    }
+    printSingleChildNodes(node.left, node);
+    printSingleChildNodes(node.right, node);
+    // Below is the approach 2
+  }
+  public static void printSingleChildNodes(Node node){
+    // write your code here
+    // Approach 2
+    if(node==null) return ;
+    if(node.left!=null && node.right==null){
+        System.out.println(node.data);
+     }else if(node.left!=null && node.right==null){
+        System.out.println(node.data);
+    
     }
     printSingleChildNodes(node.left, node);
     printSingleChildNodes(node.right, node);
