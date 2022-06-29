@@ -3,7 +3,7 @@ package binarySearchTree;
 import java.io.*;
 import java.util.*;
 
-public class AddNodeToBst {
+public class RemoveNodeFromBst {
   public static class Node {
     int data;
     Node left;
@@ -81,20 +81,37 @@ public class AddNodeToBst {
     display(node.right);
   }
 
-  public static Node add(Node node, int data) {
+  public static Node remove(Node node, int data) {
     // write your code here
     if(node==null){
-        Node nod=new Node(data, null, null);
-        // nod.data=data;
-        return nod;
-    }
-    if(data<node.data){
-        node.left=add(node.left, data);
+        return null;
+    }else if(data<node.data){
+        node.left=remove(node.left, data);
+        return node;
+    }else if(node.data<data){
+        node.right=remove(node.right, data);
+        return node;
     }else{
-        node.right=add(node.right, data);
+        Node lchild=node.left;
+        Node rchild=node.right;
+        if(lchild==null && rchild==null){
+            return null;
+        }else if(lchild==null){
+            return rchild;
+        }else if(rchild==null){
+            return lchild;
+        }else{
+            int maxVal=max(lchild);
+            node.data=maxVal;
+            node.left=remove(lchild, maxVal);
+            return node;
+        }
     }
-    return node;
-    
+  }
+  public static int max(Node node) {
+    // write your code here
+    if(node.right==null) return node.data;
+    return max(node.right);
   }
 
   public static void main(String[] args) throws Exception {
@@ -113,7 +130,7 @@ public class AddNodeToBst {
     int data = Integer.parseInt(br.readLine());
 
     Node root = construct(arr);
-    root = add(root, data);
+    root = remove(root, data);
 
     display(root);
   }
