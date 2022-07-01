@@ -1,4 +1,5 @@
 // nados Intermediate
+package linkedList;
 import java.util.*;
 
 class Main {

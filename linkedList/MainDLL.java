@@ -1,4 +1,5 @@
 // Design a Linked List : Single or Double 
+package linkedList;
 class MyLinkedList {
     public class Node{
         int val;
