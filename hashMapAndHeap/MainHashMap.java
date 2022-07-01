@@ -3,7 +3,7 @@ package hashMapAndHeap;
 
 import java.util.HashMap;
 
-public class Main{
+public class MainHashMap{
     public static void main(String args[]){
         HashMap<String,Integer> hm = new HashMap<>();
         System.out.println(hm);
