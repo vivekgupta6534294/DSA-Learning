@@ -2,7 +2,7 @@
 package linkedList;
 import java.util.*;
 
-class Main {
+class UnfoldOfLinkedlist {
     public static class ListNode {
         int val = 0;
         ListNode next = null;
