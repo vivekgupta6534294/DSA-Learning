@@ -78,3 +78,5 @@ public class IsGraphCyclic {
         return false;
     }
 }
+// Just like get connected  take example of isolated graph 
+
