@@ -13,9 +13,14 @@ public class GetSubsequence {
            base.add("");
            return base;
         }
-        String res=s.substring(1);
-        char ch=s.charAt(0);
+
+        String res=s.substring(1);//g f g ,,, f   g
+        char ch=s.charAt(0);/// g
+
+
+
         ArrayList<String> rres=getSS(res);
+
         ArrayList<String> myList=new ArrayList<>();
         // Exclude
         for(String str: rres){
