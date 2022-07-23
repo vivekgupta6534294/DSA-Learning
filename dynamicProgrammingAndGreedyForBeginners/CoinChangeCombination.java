@@ -1,8 +1,8 @@
-
+package dynamicProgrammingAndGreedyForBeginners;
 import java.io.*;
 import java.util.*;
 
-public class Main {
+public class CoinChangeCombination {
 
     public static void main(String[] args) throws Exception {
         Scanner sc=new Scanner(System.in);
@@ -12,7 +12,7 @@ public class Main {
             arr[i]=sc.nextInt();
         }
         int amt=sc.nextInt();
-        int dp[]=new int[am+1];
+        int dp[]=new int[amt+1];
         dp[0]=1;
         for(int i=0;i<arr.length;i++){
             for(int j=arr[i];j<dp.length;j++){

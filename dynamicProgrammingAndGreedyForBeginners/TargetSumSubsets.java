@@ -2,7 +2,7 @@ package dynamicProgrammingAndGreedyForBeginners;
 import java.io.*;
 import java.util.*;
 
-public class Main {
+public class TargetSumSubsets {
 
     public static void main(String[] args){
         Scanner scn = new Scanner(System.in);

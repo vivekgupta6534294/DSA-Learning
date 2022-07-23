@@ -1,7 +1,8 @@
+package dynamicProgrammingAndGreedyForBeginners;
 import java.io.*;
 import java.util.*;
  
-public class Main {
+public class Goldmine {
  
   public static void main(String[] args) throws Exception {
     // write your code here
