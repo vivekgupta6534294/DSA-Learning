@@ -1,0 +1,33 @@
+class Solution {
+    public TreeNode sortedListToBST(ListNode head) {
+        if(head==null) return null;
+        return funct(head); 
+        
+    }
+    // 5 9 null     
+         // 9          5   null
+    public TreeNode funct(ListNode head){
+            
+        if(head==null) return null;
+         System.out.println(head.val);
+        ListNode slow=head;
+        ListNode fast=head;
+        ListNode prev=null;
+        while(fast!=null && fast.next!=null){
+            prev=slow;
+            slow=slow.next;
+            fast=fast.next.next;
+        }
+        if(prev!=null)prev.next=null;
+//         else {
+//              TreeNode node=new TreeNode(head.val);
+//             return node;
+        
+//         }
+        
+        TreeNode node=new TreeNode(slow.val);
+        if(prev!=null)node.left=funct(head);
+        if(prev!=null)node.right=funct(slow.next);
+        return node;
+    }
+}

@@ -1,0 +1,27 @@
+class Solution {
+    public void flatten(TreeNode root) {
+        if(root==null) return ;
+        // faith rakh raha hu
+        flatten(root.left);
+        flatten(root.right);
+        if(root.left!=null){
+            TreeNode lchild=root.left;
+            TreeNode rchild=root.right;
+            TreeNode tailLchild=tail(lchild);
+            
+            
+            // expectation
+            root.right=lchild;
+            tailLchild.right=rchild;
+            root.left=null;
+        }
+        
+    }
+    public TreeNode tail(TreeNode root){
+        if(root==null) return null;
+        while(root.right!=null){
+            root=root.right;
+        }
+        return root;
+    }
+}
