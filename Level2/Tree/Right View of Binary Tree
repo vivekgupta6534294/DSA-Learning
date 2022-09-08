@@ -1,0 +1,30 @@
+class Solution {
+    public List<Integer> rightSideView(TreeNode root) {
+        // Your code here
+      Deque<TreeNode> mq=new ArrayDeque<>();
+      Deque<TreeNode> hq=new ArrayDeque<>();
+      ArrayList<Integer> res=new ArrayList<>();
+      if(root==null) return res;
+      res.add(root.val);
+      mq.add(root);
+      while(mq.size()>0){
+          TreeNode rem=mq.remove();
+          if(rem.left!=null){
+              hq.add(rem.left);
+          } 
+          if(rem.right!=null) {
+              hq.add(rem.right);
+          }
+          if(mq.isEmpty()==true){
+              if(hq.isEmpty()==false){
+                  TreeNode top=hq.getLast();
+                  res.add(top.val);
+              }
+                  mq=hq;
+                  hq=new ArrayDeque<>();
+          }
+      }
+      return res;
+        
+    }
+}
