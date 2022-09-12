@@ -1,0 +1,40 @@
+class GfG
+{
+    // o(n)  time + o(n2) space 
+    Node buildTree(int inorder[], int level[])
+    {
+        ArrayList<Integer> arr=new ArrayList<>();
+        //your code here
+        for(int i:level){
+            arr.add(i);
+        }
+        return buildTree(inorder, arr, 0, inorder.length-1);
+    }
+    Node buildTree(int inorder[],ArrayList<Integer> levelOrder, int left, int right){
+        if(levelOrder.size()==0) return null;
+        int rval=levelOrder.get(0);
+        Node root=new Node(rval);
+        if(levelOrder.size()==1) return root;
+        
+        int idx=left;
+        HashSet<Integer> leftSideElements=new HashSet<>();
+        while(inorder[idx]!=rval) leftSideElements.add(inorder[idx++]);
+        ArrayList<Integer> leftLevelOrder=new ArrayList<>();
+        ArrayList<Integer> rightLevelOrder=new ArrayList<>();
+        for(int i=1;i<levelOrder.size();i++){
+            int vl=levelOrder.get(i);
+            if(leftSideElements.contains(vl)){
+                leftLevelOrder.add(vl);
+            }else{
+                rightLevelOrder.add(vl);
+            }
+        }
+        root.left=buildTree(inorder, leftLevelOrder,left, idx-1);
+        root.right=buildTree(inorder, rightLevelOrder,idx+1,right);
+        return root;
+    }
+    
+   
+}
+
+
