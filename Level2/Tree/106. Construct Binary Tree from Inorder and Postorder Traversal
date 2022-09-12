@@ -1,0 +1,28 @@
+
+class Solution {
+    int postIdx;
+    HashMap<Integer,Integer> map;
+    public TreeNode buildTree(int[] inorder, int[] postorder) {
+        postIdx = postorder.length-1;
+        map = new HashMap<>();
+        for(int i = 0 ; i < inorder.length ; i++){
+            int vl = inorder[i];
+            map.put(vl,i);
+        }
+        return revPreOrderTraversal(postorder,0,postorder.length-1);
+    }
+    public TreeNode revPreOrderTraversal(int[] postorder,int left,int right){
+        if(left > right) return null;
+        
+        int rval = postorder[postIdx--];
+        TreeNode root = new TreeNode(rval);
+        int idx = map.get(rval); // O(1)
+        
+        root.right = revPreOrderTraversal(postorder,idx+1,right);
+        root.left = revPreOrderTraversal(postorder,left,idx-1);
+        return root;
+    }
+}
+// exact same hoga 
+//just reverse se start 
+//and reverse preorder
