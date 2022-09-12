@@ -1,0 +1,27 @@
+class Solution {
+    int preidx;
+    public TreeNode buildTree(int[] preorder, int[] inorder) {
+        preidx=0;
+        return preOrder(preorder, inorder,0,preorder.length-1);
+        
+    }
+    // Find Wala Can be Optimised using HashMap <Number ke Samne Index> 
+    public int findInorder(int[]inorder,int left, int right,int val){
+        while(left<=right){
+            if(inorder[left]==val)return left;
+            left++;
+        }
+        return -1;
+    }
+    public TreeNode preOrder(int []preorder, int []inorder, int left, int right){
+        if(left>right){
+            return null;
+        }
+        int rval=preorder[preidx++];
+        TreeNode root=new TreeNode(rval);
+        int idx=findInorder(inorder,left,right,rval);
+        root.left=preOrder(preorder,inorder,left,idx-1);
+        root.right=preOrder(preorder,inorder,idx+1,right);
+        return root;
+    }
+}
