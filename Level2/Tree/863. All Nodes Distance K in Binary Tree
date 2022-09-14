@@ -1,0 +1,55 @@
+/**
+ * Definition for a binary tree node.
+ * public class TreeNode {
+ *     int val;
+ *     TreeNode left;
+ *     TreeNode right;
+ *     TreeNode(int x) { val = x; }
+ * }
+ */
+class Solution {
+    public List<TreeNode> nodeToRootPath(TreeNode root, int target){
+        if(root==null){
+            return new ArrayList<>();
+        }
+        if(root.val==target){
+            List<TreeNode> ans=new ArrayList<>();
+            ans.add(root);
+            return ans;
+        }
+        List<TreeNode> left=nodeToRootPath(root.left,target);
+        if(left.size()>0){
+            left.add(root);
+            return left;
+        }
+        List<TreeNode> right=nodeToRootPath(root.right,target);
+        if(right.size()>0){
+            right.add(root);
+            return right;
+        }
+        return new ArrayList<>();
+    }
+    public List<Integer> distanceK(TreeNode root, TreeNode target, int k) {
+        
+        List<TreeNode> path=nodeToRootPath(root,target.val);
+        List<Integer> ans=new ArrayList<>();
+        for(int i=0;i<path.size();i++){
+            TreeNode cn=path.get(i);
+            TreeNode block=null;
+            if(i!=0) block=path.get(i-1);
+            klevelDown(cn,block,k,ans);
+            k--;
+        }
+        return ans;
+    }
+    public void klevelDown(TreeNode root, TreeNode block, int k , List<Integer> ans){
+        if(root==null) return;
+        if(root==block)return ;
+        if(k==0) {
+            ans.add(root.val);
+            return;
+        }
+        klevelDown(root.left,block,k-1,ans);
+        klevelDown(root.right,block,k-1,ans);
+    }
+}
