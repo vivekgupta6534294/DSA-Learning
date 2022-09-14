@@ -1,0 +1,22 @@
+class Solution {
+    public static class Node {
+        int withRobbery=0;
+        int withoutRobbery=0;
+    }
+    public int rob(TreeNode root) {
+        Node ans=robHelp(root);
+        return Math.max(ans.withRobbery, ans.withoutRobbery);
+        
+    }
+    private Node robHelp(TreeNode root){
+        if(root==null) return new Node();
+        Node left=robHelp(root.left);
+        Node right=robHelp(root.right);
+        
+        Node ans=new Node();
+        ans.withRobbery=left.withoutRobbery+root.val+right.withoutRobbery;
+        ans.withoutRobbery=Math.max(left.withRobbery,left.withoutRobbery)+Math.max(right.withRobbery,right.withoutRobbery);
+        return ans;
+        
+    }
+}
