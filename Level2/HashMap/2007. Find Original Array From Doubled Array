@@ -1,0 +1,34 @@
+class Solution {
+    public int[] findOriginalArray(int[] changed) {
+        
+        Arrays.sort(changed);
+        int n=changed.length;
+        
+        int []arr=new int[n/2];
+        HashMap<Integer,Integer> map=new HashMap<>();
+        int idx=0;
+        for(int i=n-1;i>=0;i--){
+            
+            int val=2*changed[i];
+            if(map.containsKey(val)){
+                arr[idx]=changed[i];
+                idx++;
+                
+                int freq=map.get(val);
+                if(freq==1){
+                    map.remove(val);
+                }else{
+                    map.put(val,freq-1);
+                }
+                
+            }else{
+                map.put(changed[i],map.getOrDefault(changed[i],0)+1);
+            }
+        }
+        if(map.size()==0){
+            return arr;
+        }
+        return new int[0];
+        
+    }
+}
